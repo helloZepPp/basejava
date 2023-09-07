@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Array based storage for Resumes
  */
@@ -63,17 +60,30 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-    // https://stackoverflow.com/questions/4150233/remove-null-value-from-string-array-in-java
 
+    	/* сначала нашел такое решение, но потом прочитал в ТЗ, что так нельзя
         List<Resume> list = new ArrayList<Resume>();
-
         for(Resume r : storage) {
-           if(r != null && storage.length > 0) {
-              list.add(r);
-           }
+           if(r != null && storage.length > 0) {list.add(r);}
+        }
+        Resume[] v_res = list.toArray(new Resume[list.size()]);
+        */
+
+        int v_size  = 0; // кол-во непустых элементов массива storage
+        int v_count = 0; // счетчик для нового массива
+
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] != null) {v_size++;}
         }
 
-        Resume[] v_res = list.toArray(new Resume[list.size()]);
+        Resume[] v_res = new Resume[v_size];
+
+
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] != null) {
+            	v_res[v_count] = storage[i]; v_count++;
+            }
+        }
 
     	return v_res;
 
