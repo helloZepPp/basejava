@@ -8,8 +8,10 @@ public class ArrayStorage {
     void clear() {
 
         for (int i = 0; i < storage.length; i++) {
-
-            if (size != 0 && storage[i] != null) {
+            if (size == 0) {
+                break;
+            }
+            if (storage[i] != null) {
                 storage[i] = null;
                 size--;
             }
@@ -53,9 +55,16 @@ public class ArrayStorage {
      */
     Resume[] getAll() {
         Resume[] resumes = new Resume[size];
+        int counter = 0;
 
-        for (int i = 0; i < size; i++) {
-            resumes[i] = storage[i];
+        for (int i = 0; i < storage.length; i++) {
+            if (counter >= size) {
+                break;
+            }
+            if (storage[i] != null && storage[i].toString() != null) {
+                resumes[counter] = storage[i];
+                counter++;
+            }
         }
         return resumes;
     }
