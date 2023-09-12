@@ -8,14 +8,12 @@ public class ArrayStorage {
 
     void clear() {
         size = 0;
-        //storage = getAll();
     }
 
     void save(Resume r) {
         size++;
         storage = getAll();
-        storage[size-1] = r;
-
+        storage[size - 1] = r;
     }
 
     Resume get(String uuid) {
